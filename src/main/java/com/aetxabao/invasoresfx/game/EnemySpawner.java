@@ -26,36 +26,42 @@ public class EnemySpawner {
 
     /**
      * Transforma una coordenada en una posición
+     *
      * @param i coordenada de 0 a n eje horizontal
      * @return posicion x
      */
-    private static int getX(Rect gameRect, int i){
-        return gameRect.left + i*gameRect.width()/ n;
+    private static int getX(Rect gameRect, int i) {
+        return gameRect.left + i * gameRect.width() / n;
     }
 
     /**
      * Transforma una coordenada en una posición
+     *
      * @param j coordenada de 0 a m eje vertical
      * @return posicion y
      */
-    private static int getY(Rect gameRect, int j){
-        return gameRect.top + j*gameRect.height()/ m;
+    private static int getY(Rect gameRect, int j) {
+        return gameRect.top + j * gameRect.height() / m;
     }
 
     public static List<AEnemy> createEnemies(Rect gameRect, int level) {
         List<AEnemy> enemies = new ArrayList<>();
         level = level % LEVELS;
 
-        switch (level){
+        switch (level) {
             case 1:
-                enemies = crearEnemigosNivelDonut(gameRect);
+                enemies = Prueba(gameRect);
+                //enemies = crearEnemigosNivelDonut(gameRect);
                 break;
             case 2:
                 enemies = crearEnemigosNivelPaquito(gameRect);
                 break;
             case 3:
-            default:
                 enemies = crearEnemigosNivelPulpo(gameRect);
+                break;
+            case 4:
+            default:
+                enemies = crearEnemigosNivelAaron(gameRect);
                 break;
         }
         return enemies;
@@ -63,15 +69,16 @@ public class EnemySpawner {
 
     /**
      * Crea un enemigo en una coordenada (i,j) con una velocidad (vx,vy)
-     * @param i coordenada horizontal
-     * @param j coordenada vertical
+     *
+     * @param i  coordenada horizontal
+     * @param j  coordenada vertical
      * @param vx velocidad eje x
      * @param vy velocidad eje y
      * @return una instancia del enemigo
      */
     public static EnemyShip createEnemyShip(EEnemyType type, Image enemyImage, Rect gameRect, int i, int j, int vx, int vy, EEnemyShot shot) {
         EnemyShip e;
-        switch (type){
+        switch (type) {
             case E_DIAGONAL:
                 e = new EnemyShipDiagonal(gameRect, enemyImage, TICKSxFRAME);
                 break;
@@ -80,7 +87,7 @@ public class EnemySpawner {
                 e = new EnemyShip(gameRect, enemyImage, TICKSxFRAME);
                 break;
         }
-        if (shot == E_SHOT_GUN){
+        if (shot == E_SHOT_GUN) {
             e.setWeapon(new Gun());
         }
         e.setPos(getX(gameRect, i), getY(gameRect, j));
@@ -136,4 +143,31 @@ public class EnemySpawner {
         return enemies;
     }
 
+    public static List<AEnemy> crearEnemigosNivelAaron(Rect gameRect) {
+        List<AEnemy> enemies = new ArrayList<>();
+        enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_1, gameRect, 0, 0, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_1, gameRect, 0, 1, -vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_ONEWAY, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 0, 2, -vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_ONEWAY, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 1, 0, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_DIAGONAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 1, 1, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_DIAGONAL, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 1, 2, -vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_SINU, ENEMYSHIP_SPRITE_IMAGE_1, gameRect, 2, 0, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_SINU, ENEMYSHIP_SPRITE_IMAGE_1, gameRect, 2, 1, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_ROCKET, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 2, 2, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_ROCKET, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 3, 0, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_BARRIER, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 3, 1, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_BARRIER, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 3, 2, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_BARRIERDOWN, ENEMYBARRIER4_SPRITE_IMAGE, gameRect, 4, 0, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_BARRIERDOWN, ENEMYBARRIER4_SPRITE_IMAGE, gameRect, 4, 1, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_TOWER, ENEMYTOWER3_SPRITE_IMAGE, gameRect, 4, 2, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemyShip(E_TOWER, ENEMYTOWER3_SPRITE_IMAGE, gameRect, 5, 3, vx, vy, E_SHOT_GUN));
+        return enemies;
+    }
+
+    public static List<AEnemy> Prueba(Rect gameRect) {
+        List<AEnemy> enemies = new ArrayList<>();
+        enemies.add(createEnemyShip(E_BARRIERDOWN, ENEMYBARRIER4_SPRITE_IMAGE, gameRect, 0, 0, 10, 0, E_SHOT_GUN));
+        return enemies;
+
+    }
 }
