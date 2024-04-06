@@ -87,8 +87,16 @@ public class Ship extends ASprite {
         if (x <= gameRect.right - width - xSpeed && x + xSpeed >= gameRect.left) {
             x = x + xSpeed;
         }
-        if (y <= gameRect.bottom - height - ySpeed && y - ySpeed >= gameRect.top){
-            y = y + ySpeed;
+              // Este codigo es el de base y tiene un bug que no puedes bajar al llegar arriba del todo (gameRect.top)
+              // el problema se basa en que se restaba y - yspeed y tiene que sumar para ver si sobrepasa el limite
+              if (y < gameRect.bottom - height - ySpeed && y + ySpeed >= gameRect.top){
+              y = y + ySpeed;
+                  // Esta fue la primera solucion que encontre, pero leyendo y viendo que es cada cosa
+                  // pude reducir el codigo y caer en que solo habia que cambiar un simbolo
+                        //if (y - 1 > gameRect.top && y + ySpeed <= gameRect.bottom - height) {
+                        //  y = y + ySpeed;
+                        // } else if (y + ySpeed + height < gameRect.bottom && y + ySpeed >= gameRect.top) {
+                        // y = y + ySpeed;
         }
     }
 
