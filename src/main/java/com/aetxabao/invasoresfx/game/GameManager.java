@@ -103,7 +103,8 @@ public class GameManager {
 
     public void shot(){
         // Disparo de mi nave
-        AShot shot = new Laserbeam(LASER_SPRITE_IMAGE);
+        // AShot shot = new Laserbeam(LASER_SPRITE_IMAGE);   // este es la imagen que venia de base para el disparo
+        AShot shot = new Laserbeam(SKINBALA_SPRITE_IMAGE);
         shot.setPos(ship.getRect().centerX(), ship.getRect().top - shot.getRect().height());
         shotsUp.add(shot);
     }

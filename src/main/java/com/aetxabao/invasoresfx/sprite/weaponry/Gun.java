@@ -13,7 +13,7 @@ public class Gun extends AWeapon {
         // Aqui llamamos al metodo shoot y es un arraylist el cual requiere de parametros una imagen y dos posiciones,
         // el cual es nuestra localizacion, desde ahi saldra el disparo
         ArrayList<AShot> list = new ArrayList<>();
-        // imagen
+        // imagen de la bala enemiga
         AShot shot = new Cannonball(BALL_SPRITE_IMAGE);
         // posiciones
         shot.setPos(sprite.getRect().centerX(), sprite.getRect().bottom);

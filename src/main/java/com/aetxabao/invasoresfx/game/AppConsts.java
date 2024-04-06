@@ -67,6 +67,7 @@ public final class AppConsts {
     //endregion
 
     //region Gun
+    public static final Image SKINBALA_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/SkinBala.png").toString());
     public static final Image BALL_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/ball.png").toString());
     //endregion
 
