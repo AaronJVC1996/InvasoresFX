@@ -3,22 +3,25 @@ package com.aetxabao.invasoresfx.sprite;
 import com.aetxabao.invasoresfx.util.Rect;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.aetxabao.invasoresfx.game.AppConsts.*;
 import static com.aetxabao.invasoresfx.game.AppConsts.ENEMYSHIP_ALFA;
 
-public class EnemyBarrier extends AEnemy implements IHaveShield{
-    private int escudoEspacial;
+public class Obstaculo extends AEnemy implements IHaveShield{
+
     int N;//ticks para cambio de frame
     int n;
     Rect gameRect;
-    public EnemyBarrier(Rect gameRect, Image img, int N) {
+    public Obstaculo(Rect gameRect, Image img, int N) {
         super(img, ENEMYSHIP_ROWS, 1);
         this.gameRect = gameRect;
         xSpeed = ENEMYSHIP_MAX_SPEED;
         x = gameRect.left+width/2;
         this.N = N;
         this.n = 0;
-        this.escudoEspacial = 20;
     }
 
     public void updateFrame(){
@@ -35,13 +38,13 @@ public class EnemyBarrier extends AEnemy implements IHaveShield{
 
     @Override
     public void update() {
-            if (x > gameRect.right - width - xSpeed || x + xSpeed < gameRect.left) {
-                xSpeed = -xSpeed;
-            }
-            x = x + xSpeed;
-            y = y + ySpeed;
-            updateFrame();
+        if (x > gameRect.right - width - xSpeed || x + xSpeed < gameRect.left) {
+            xSpeed = -xSpeed;
         }
+        x = x + xSpeed;
+        y = y + ySpeed;
+        updateFrame();
+    }
 
     @Override
     public void draw(GraphicsContext gc) {
@@ -53,16 +56,9 @@ public class EnemyBarrier extends AEnemy implements IHaveShield{
                 dst.left, dst.top, dst.width(), dst.height());
     }
 
-
     @Override
     public boolean impact() {
-        if (escudoEspacial > 0) {
-            escudoEspacial--; // Restar 1 a la resistencia del escudo
-            return false; // El enemigo no muere por que tiene escudo
-        } else {
-            // El escudo se ha terminado, es 0
-            return true; // El enemigo muere por que ya no tiene escudo
-        }
+        // Es inmortal
+            return false;
     }
-
 }

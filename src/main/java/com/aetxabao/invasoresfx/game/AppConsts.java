@@ -29,6 +29,7 @@ public final class AppConsts {
     //region EnemyGenerator
     final static int LEVELS = 4;
     final static int TICKSxFRAME = 3;
+    static final Image ENEMYSHIP_OBSTACULO = new Image(Main.class.getResource("sprite/Obstaculo.png").toString());
     static final Image ENEMYSHIP_ENEMIGONUEVO = new Image(Main.class.getResource("sprite/EnemigoNuevo.png").toString());
     static final Image ENEMYSHIP_SPRITE_IMAGE_1 = new Image(Main.class.getResource("sprite/ei1.png").toString());
     static final Image ENEMYSHIP_SPRITE_IMAGE_2 = new Image(Main.class.getResource("sprite/ei2.png").toString());

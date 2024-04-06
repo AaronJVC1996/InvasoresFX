@@ -126,54 +126,67 @@ public class GameManager {
         }
 
         //Detección de colisiones de los enemigos con los disparos del protagonista
-        for (Iterator<AShot> itBullet = shotsUp.iterator(); itBullet.hasNext(); ) {
-            AShot AShot = itBullet.next();
-            for (Iterator<AEnemy> itSprite = enemies.iterator(); itSprite.hasNext(); ) {
-                ASprite sprite = itSprite.next();
-                if (AShot.collides(sprite)){
-                    if (sprite instanceof EnemyShipGroup){
-                        List<EnemyShip> enemyShipList = ((EnemyShipGroup) sprite).getEnemyList();
-                        for (Iterator<EnemyShip> itEnemy = enemyShipList.iterator(); itEnemy.hasNext(); ) {
-                            EnemyShip enemyShip = itEnemy.next();
-                            if (AShot.collides(enemyShip)){
-                                temps.add(new SpriteTemp(temps, enemyShip.getRect().centerX(), enemyShip.getRect().centerY(),
-                                                         EXPLOSION_9_SPRITE_IMAGE, 9));
-                                itEnemy.remove();
-                                if (enemyShipList.size()==0){
-                                    itSprite.remove();
-                                }else{
-                                    ((EnemyShipGroup) sprite).setXY();
-                                    ((EnemyShipGroup) sprite).setWidth();
-                                    ((EnemyShipGroup) sprite).setHeight();
+            for (Iterator<AShot> itBullet = shotsUp.iterator(); itBullet.hasNext(); ) {
+                AShot AShot = itBullet.next();
+                for (Iterator<AEnemy> itSprite = enemies.iterator(); itSprite.hasNext(); ) {
+                    ASprite sprite = itSprite.next();
+                    if (AShot.collides(sprite)){
+                        if (sprite instanceof EnemyShipGroup){
+                            List<EnemyShip> enemyShipList = ((EnemyShipGroup) sprite).getEnemyList();
+                            for (Iterator<EnemyShip> itEnemy = enemyShipList.iterator(); itEnemy.hasNext(); ) {
+                                EnemyShip enemyShip = itEnemy.next();
+                                if (AShot.collides(enemyShip)){
+                                    temps.add(new SpriteTemp(temps, enemyShip.getRect().centerX(), enemyShip.getRect().centerY(),
+                                                             EXPLOSION_9_SPRITE_IMAGE, 9));
+                                    itEnemy.remove();
+                                    if (enemyShipList.size()==0){
+                                        itSprite.remove();
+                                    }else{
+                                        ((EnemyShipGroup) sprite).setXY();
+                                        ((EnemyShipGroup) sprite).setWidth();
+                                        ((EnemyShipGroup) sprite).setHeight();
+                                    }
+                                    break;
                                 }
-                                break;
                             }
-                        }
-                    }else if (sprite instanceof IHaveShield){
-                        temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
-                                                 EXPLOSION_9_SPRITE_IMAGE, 9));
-                        // He habilitado este if para crear mi nuevo enemigo
-                        // podria cambiarle el nombre y refactorizar si quiero (clase nueva de enemigo)
-                        // si el impact es true, el enemigo muere
-                        if (((EnemyBarrier) sprite).impact()){
+                        }else if (sprite instanceof IHaveShield){
+                            temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
+                                                     EXPLOSION_9_SPRITE_IMAGE, 9));
+                            // He habilitado este if para crear mi nuevo enemigo
+                            // podria cambiarle el nombre y refactorizar si quiero (clase nueva de enemigo)
+                            // si el impact es true, el enemigo muere
+                            if (sprite instanceof EnemyBarrier) {
+                                if (((EnemyBarrier) sprite).impact()){
+                                    itSprite.remove();
+                                }
+                                // como he creado dos enemigos con escudo nececito aniadirlo aqui
+                                // de lo contrario me daria error.
+                            } else if (sprite instanceof Obstaculo) {
+                                if (((Obstaculo) sprite).impact()){
+                                    itSprite.remove();
+                                }
+                            }
+                            // este es el antiguo if
+                            // if (((EnemyBarrier) sprite).impact()){
+                            // itSprite.remove();
+                            // }
+
+                        }else{
+                            temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
+                                                     EXPLOSION_9_SPRITE_IMAGE, 9));
                             itSprite.remove();
                         }
-                    }else{
-                        temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
-                                                 EXPLOSION_9_SPRITE_IMAGE, 9));
-                        itSprite.remove();
+                        score += AppConsts.PTS_ENEMYSHIP;
+                        itBullet.remove();
+                        break;
                     }
-                    score += AppConsts.PTS_ENEMYSHIP;
+                }
+                if (gameRect.contains(AShot.getRect())){
+                    AShot.update();
+                }else{
                     itBullet.remove();
-                    break;
                 }
             }
-            if (gameRect.contains(AShot.getRect())){
-                AShot.update();
-            }else{
-                itBullet.remove();
-            }
-        }
 
         //Actualización del protagonista
         if (ship.isAlive()) {

@@ -118,6 +118,23 @@ public class EnemySpawner {
         return a;
     }
 
+    public static Obstaculo createObstaculo(EEnemyType type, Image enemyImage, Rect gameRect, int i, int j, int vx, int vy, EEnemyShot shot) {
+        Obstaculo ob;
+        switch (type) {
+            case BOSS:
+            default:
+                ob = new Obstaculo(gameRect, enemyImage, TICKSxFRAME);
+                break;
+        }
+        if (shot == E_SHOT_GUN) {
+            ob.setWeapon(new Gun());
+        }
+        ob.setPos(getX(gameRect, i), getY(gameRect, j));
+        ob.setXSpeed(vx);
+        ob.setYSpeed(vy);
+        return ob;
+    }
+
     public static List<AEnemy> crearEnemigosNivelDonut(Rect gameRect) {
         List<AEnemy> enemies = new ArrayList<>();
         enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 0, 0, vx, 0, E_SHOT_GUN));
@@ -192,10 +209,12 @@ public class EnemySpawner {
 
     public static List<AEnemy> Prueba(Rect gameRect) {
         List<AEnemy> enemies = new ArrayList<>();
-        enemies.add(createEnemigoNuevo(E_SINU, ENEMYSHIP_ENEMIGONUEVO, gameRect, 0, 0, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemigoNuevo(BOSS, ENEMYSHIP_ENEMIGONUEVO, gameRect, 0, 0, vx, 0, E_SHOT_GUN));
+        enemies.add(createObstaculo(OBSTACULO, ENEMYSHIP_OBSTACULO, gameRect, 3, 0, 0, vy, E_SHOT_NOTHING));
+        enemies.add(createObstaculo(OBSTACULO, ENEMYSHIP_OBSTACULO, gameRect, 5, 0, 0, vy, E_SHOT_NOTHING));
+        enemies.add(createObstaculo(OBSTACULO, ENEMYSHIP_OBSTACULO, gameRect, 7, 0, 0, vy, E_SHOT_NOTHING));
         contarEnemigos(enemies);
         return enemies;
-
     }
 
     private static void contarEnemigos(List<AEnemy> enemies) {
