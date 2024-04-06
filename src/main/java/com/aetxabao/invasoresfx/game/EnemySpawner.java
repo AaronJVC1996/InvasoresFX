@@ -104,7 +104,7 @@ public class EnemySpawner {
     public static EnemyBarrier createEnemigoNuevo(EEnemyType type, Image enemyImage, Rect gameRect, int i, int j, int vx, int vy, EEnemyShot shot) {
         EnemyBarrier a;
         switch (type) {
-            case E_SINU:
+            case BOSS:
             default:
                 a = new EnemyBarrier(gameRect, enemyImage, TICKSxFRAME);
                 break;
@@ -192,7 +192,7 @@ public class EnemySpawner {
 
     public static List<AEnemy> Prueba(Rect gameRect) {
         List<AEnemy> enemies = new ArrayList<>();
-        enemies.add(createEnemigoNuevo(E_SINU, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 0, 0, vx, vy, E_SHOT_GUN));
+        enemies.add(createEnemigoNuevo(E_SINU, ENEMYSHIP_ENEMIGONUEVO, gameRect, 0, 0, vx, vy, E_SHOT_GUN));
         contarEnemigos(enemies);
         return enemies;
 

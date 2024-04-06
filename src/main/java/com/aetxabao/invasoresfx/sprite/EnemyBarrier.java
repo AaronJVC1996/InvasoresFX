@@ -13,7 +13,7 @@ public class EnemyBarrier extends AEnemy implements IHaveShield{
     int n;
     Rect gameRect;
     public EnemyBarrier(Rect gameRect, Image img, int N) {
-        super(img, ENEMYSHIP_ROWS, ENEMYSHIP_COLS);
+        super(img, ENEMYSHIP_ROWS, 1);
         this.gameRect = gameRect;
         xSpeed = ENEMYSHIP_MAX_SPEED;
         x = gameRect.left+width/2;
@@ -65,4 +65,5 @@ public class EnemyBarrier extends AEnemy implements IHaveShield{
             return true; // El enemigo muere por que ya no tiene escudo
         }
     }
+
 }
