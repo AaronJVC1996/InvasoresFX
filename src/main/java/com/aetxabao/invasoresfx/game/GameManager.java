@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 public class GameManager {
+    // Este es la clase de mi nave y sus cosas.
 
     // region attributes
     private Rect gameRect;
@@ -101,6 +102,7 @@ public class GameManager {
     }
 
     public void shot(){
+        // Disparo de mi nave
         AShot shot = new Laserbeam(LASER_SPRITE_IMAGE);
         shot.setPos(ship.getRect().centerX(), ship.getRect().top - shot.getRect().height());
         shotsUp.add(shot);

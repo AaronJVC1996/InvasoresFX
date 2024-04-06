@@ -6,6 +6,8 @@ import javafx.scene.image.Image;
  * Disparo descendente sin animación
  */
 public class Cannonball extends AShot {
+    // Esta clase son las balas del enemigo, cuando creas una tienes que poner el ball sprite(su imagen)
+    // Nuestra nave dispara Laserbeam y los enemigos dispara Cannonball
 
     // region attributes
     static int ROWS = 1;
