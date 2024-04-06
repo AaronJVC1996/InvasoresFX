@@ -152,9 +152,12 @@ public class GameManager {
                     }else if (sprite instanceof IHaveShield){
                         temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                                  EXPLOSION_9_SPRITE_IMAGE, 9));
-//                        if (((EnemyBarrier) sprite).impact()){
-//                            itSprite.remove();
-//                        }
+                        // He habilitado este if para crear mi nuevo enemigo
+                        // podria cambiarle el nombre y refactorizar si quiero (clase nueva de enemigo)
+                        // si el impact es true, el enemigo muere
+                        if (((EnemyBarrier) sprite).impact()){
+                            itSprite.remove();
+                        }
                     }else{
                         temps.add(new SpriteTemp(temps, sprite.getRect().centerX(), sprite.getRect().centerY(),
                                                  EXPLOSION_9_SPRITE_IMAGE, 9));

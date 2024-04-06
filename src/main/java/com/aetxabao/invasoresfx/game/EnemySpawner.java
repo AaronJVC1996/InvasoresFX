@@ -19,7 +19,7 @@ public class EnemySpawner {
     private static Logger log1 = Logger.getLogger(EnemyShip.class);
     private static Logger log2 = Logger.getLogger(EnemyShipDiagonal.class);
     private static Logger log3 = Logger.getLogger(EnemyShipGroup.class);
-    private static Logger log4 = Logger.getLogger(EnemigoNuevo.class);
+    private static Logger log4 = Logger.getLogger(EnemyBarrier.class);
 
     //region attributes
     public static int n = 8;
@@ -101,6 +101,23 @@ public class EnemySpawner {
         return e;
     }
 
+    public static EnemyBarrier createEnemigoNuevo(EEnemyType type, Image enemyImage, Rect gameRect, int i, int j, int vx, int vy, EEnemyShot shot) {
+        EnemyBarrier a;
+        switch (type) {
+            case E_SINU:
+            default:
+                a = new EnemyBarrier(gameRect, enemyImage, TICKSxFRAME);
+                break;
+        }
+        if (shot == E_SHOT_GUN) {
+            a.setWeapon(new Gun());
+        }
+        a.setPos(getX(gameRect, i), getY(gameRect, j));
+        a.setXSpeed(vx);
+        a.setYSpeed(vy);
+        return a;
+    }
+
     public static List<AEnemy> crearEnemigosNivelDonut(Rect gameRect) {
         List<AEnemy> enemies = new ArrayList<>();
         enemies.add(createEnemyShip(E_NORMAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 0, 0, vx, 0, E_SHOT_GUN));
@@ -175,7 +192,7 @@ public class EnemySpawner {
 
     public static List<AEnemy> Prueba(Rect gameRect) {
         List<AEnemy> enemies = new ArrayList<>();
-        enemies.add(createEnemyShip(E_BARRIERDOWN, ENEMYBARRIER4_SPRITE_IMAGE, gameRect, 0, 0, 10, 0, E_SHOT_GUN));
+        enemies.add(createEnemigoNuevo(E_SINU, ENEMYSHIP_SPRITE_IMAGE_3, gameRect, 0, 0, vx, vy, E_SHOT_GUN));
         contarEnemigos(enemies);
         return enemies;
 
@@ -187,28 +204,28 @@ public class EnemySpawner {
 
         int normales = 0;
         for (AEnemy enemy : enemies) {
-            if (enemy instanceof EnemyShip) { // Suponiendo que DiagonalEnemy es la clase para enemigos diagonales
+            if (enemy instanceof EnemyShip) {
                 normales++;
             }
         }
 
         int diagonales = 0;
         for (AEnemy enemy : enemies) {
-            if (enemy instanceof EnemyShipDiagonal) { // Suponiendo que DiagonalEnemy es la clase para enemigos diagonales
+            if (enemy instanceof EnemyShipDiagonal) {
                 diagonales++;
             }
         }
 
         int grupos = 0;
         for (AEnemy enemy : enemies) {
-            if (enemy instanceof EnemyShipGroup) { // Suponiendo que DiagonalEnemy es la clase para enemigos diagonales
+            if (enemy instanceof EnemyShipGroup) {
                 grupos++;
             }
         }
 
         int nuevos = 0;
         for (AEnemy enemy : enemies) {
-            if (enemy instanceof EnemigoNuevo) { // Suponiendo que DiagonalEnemy es la clase para enemigos diagonales
+            if (enemy instanceof EnemyBarrier) {
                 nuevos++;
             }
         }
