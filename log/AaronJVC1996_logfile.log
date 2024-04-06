@@ -1254,3 +1254,20 @@
 [2024-04-06 17:30:34] [DEBUG] [GameManager: 63] nextLevel level=2
 [2024-04-06 17:30:34] [DEBUG] [EnemyShip:252] Cantidad de EnemyShip N= 5
 [2024-04-06 17:30:34] [DEBUG] [EnemyShipGroup:254] Cantidad de EnemyShipGroup (Grupo de enemigos) N= 1
+[2024-04-06 17:43:00] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-06 17:43:02] [DEBUG] [GameManager: 53] start level=1
+[2024-04-06 17:43:02] [DEBUG] [EnemyBarrier:255] Cantidad de EnemigoNuevo N= 1
+[2024-04-06 17:43:31] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-06 17:43:32] [DEBUG] [GameManager: 53] start level=1
+[2024-04-06 17:43:32] [DEBUG] [EnemyBarrier:255] Cantidad de EnemigoNuevo N= 1
+[2024-04-06 17:47:52] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-06 17:47:53] [DEBUG] [GameManager: 53] start level=1
+[2024-04-06 17:47:53] [DEBUG] [EnemyBarrier:255] Cantidad de EnemigoNuevo N= 1
+[2024-04-06 17:48:40] [DEBUG] [GameManager:220] updateGame E_APP_ONELESSLIFE enemies=318 shotsDown=0 shotsUp=0
+[2024-04-06 17:50:43] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-06 17:50:45] [DEBUG] [GameManager: 53] start level=1
+[2024-04-06 17:50:45] [DEBUG] [EnemyBarrier:255] Cantidad de EnemigoNuevo N= 1
+[2024-04-06 17:51:04] [DEBUG] [GameManager:220] updateGame E_APP_ONELESSLIFE enemies=253 shotsDown=0 shotsUp=0
+[2024-04-06 17:53:33] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-06 17:53:33] [DEBUG] [GameManager: 53] start level=1
+[2024-04-06 17:53:33] [DEBUG] [EnemyBarrier:255] Cantidad de EnemigoNuevo N= 1
