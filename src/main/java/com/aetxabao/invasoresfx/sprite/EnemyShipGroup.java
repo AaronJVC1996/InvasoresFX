@@ -2,6 +2,7 @@ package com.aetxabao.invasoresfx.sprite;
 
 import com.aetxabao.invasoresfx.util.Rect;
 import javafx.scene.canvas.GraphicsContext;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 
@@ -11,7 +12,6 @@ import java.util.List;
 public class EnemyShipGroup extends EnemyShip {
 
     List<EnemyShip> group;
-
     public EnemyShipGroup(Rect gameRect, List<EnemyShip> enemies) {
         super(gameRect, null, 1);
         group = enemies;

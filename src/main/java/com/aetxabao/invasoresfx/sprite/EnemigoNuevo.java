@@ -6,18 +6,13 @@ import javafx.scene.image.Image;
 import org.apache.log4j.Logger;
 
 import static com.aetxabao.invasoresfx.game.AppConsts.*;
+import static com.aetxabao.invasoresfx.game.AppConsts.ENEMYSHIP_ALFA;
 
-
-/**
- * Enemigos normales que se desplazan de lado a lado y en los extremos descienden.
- */
-public class EnemyShip extends AEnemy {
-
+public class EnemigoNuevo extends AEnemy {
     int N;//ticks para cambio de frame
     int n;
     Rect gameRect;
-
-    public EnemyShip(Rect gameRect, Image img, int N) {
+    public EnemigoNuevo(Rect gameRect, Image img, int N) {
         super(img, ENEMYSHIP_ROWS, ENEMYSHIP_COLS);
         this.gameRect = gameRect;
         xSpeed = ENEMYSHIP_MAX_SPEED;
@@ -40,13 +35,13 @@ public class EnemyShip extends AEnemy {
 
     @Override
     public void update() {
-        if (x > gameRect.right - width - xSpeed || x + xSpeed < gameRect.left) {
-            xSpeed = -xSpeed;
-            y = y + height;
+            if (x > gameRect.right - width - xSpeed || x + xSpeed < gameRect.left) {
+                xSpeed = -xSpeed;
+            }
+            x = x + xSpeed;
+            y = y + ySpeed;
+            updateFrame();
         }
-        x = x + xSpeed;
-        updateFrame();
-    }
 
     @Override
     public void draw(GraphicsContext gc) {

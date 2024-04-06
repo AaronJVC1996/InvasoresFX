@@ -6,6 +6,7 @@ import com.aetxabao.invasoresfx.sprite.*;
 import com.aetxabao.invasoresfx.sprite.weaponry.Gun;
 import com.aetxabao.invasoresfx.util.Rect;
 import javafx.scene.image.Image;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,10 @@ import static com.aetxabao.invasoresfx.game.enums.EEnemyShot.*;
 import static com.aetxabao.invasoresfx.game.enums.EEnemyType.*;
 
 public class EnemySpawner {
+    private static Logger log1 = Logger.getLogger(EnemyShip.class);
+    private static Logger log2 = Logger.getLogger(EnemyShipDiagonal.class);
+    private static Logger log3 = Logger.getLogger(EnemyShipGroup.class);
+    private static Logger log4 = Logger.getLogger(EnemigoNuevo.class);
 
     //region attributes
     public static int n = 8;
@@ -112,6 +117,7 @@ public class EnemySpawner {
         EnemyShipGroup eg1 = new EnemyShipGroup(gameRect, el1);
         eg1.setXSpeed(vx);
         enemies.add(eg1);
+        contarEnemigos(enemies);
         return enemies;
     }
 
@@ -129,6 +135,7 @@ public class EnemySpawner {
         EnemyShipGroup eg1 = new EnemyShipGroup(gameRect, el1);
         eg1.setXSpeed(vx);
         enemies.add(eg1);
+        contarEnemigos(enemies);
         return enemies;
     }
 
@@ -140,6 +147,7 @@ public class EnemySpawner {
         enemies.add(createEnemyShip(E_DIAGONAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 7, 0, -vx, vy, E_SHOT_NOTHING));
         enemies.add(createEnemyShip(E_DIAGONAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 3, 0, -vx, vy, E_SHOT_NOTHING));
         enemies.add(createEnemyShip(E_DIAGONAL, ENEMYSHIP_SPRITE_IMAGE_2, gameRect, 4, 0, vx, vy, E_SHOT_NOTHING));
+        contarEnemigos(enemies);
         return enemies;
     }
 
@@ -161,13 +169,53 @@ public class EnemySpawner {
         enemies.add(createEnemyShip(E_BARRIERDOWN, ENEMYBARRIER4_SPRITE_IMAGE, gameRect, 4, 1, vx, vy, E_SHOT_GUN));
         enemies.add(createEnemyShip(E_TOWER, ENEMYTOWER3_SPRITE_IMAGE, gameRect, 4, 2, vx, vy, E_SHOT_GUN));
         enemies.add(createEnemyShip(E_TOWER, ENEMYTOWER3_SPRITE_IMAGE, gameRect, 5, 3, vx, vy, E_SHOT_GUN));
+        contarEnemigos(enemies);
         return enemies;
     }
 
     public static List<AEnemy> Prueba(Rect gameRect) {
         List<AEnemy> enemies = new ArrayList<>();
         enemies.add(createEnemyShip(E_BARRIERDOWN, ENEMYBARRIER4_SPRITE_IMAGE, gameRect, 0, 0, 10, 0, E_SHOT_GUN));
+        contarEnemigos(enemies);
         return enemies;
 
+    }
+
+    private static void contarEnemigos(List<AEnemy> enemies) {
+        // He creado este metodo para que el codigo este mas limpio en los niveles que es donde lo llamaremos
+        // asi solo llamo este metodo y le inserto la lista de enemigos.
+
+        int normales = 0;
+        for (AEnemy enemy : enemies) {
+            if (enemy instanceof EnemyShip) { // Suponiendo que DiagonalEnemy es la clase para enemigos diagonales
+                normales++;
+            }
+        }
+
+        int diagonales = 0;
+        for (AEnemy enemy : enemies) {
+            if (enemy instanceof EnemyShipDiagonal) { // Suponiendo que DiagonalEnemy es la clase para enemigos diagonales
+                diagonales++;
+            }
+        }
+
+        int grupos = 0;
+        for (AEnemy enemy : enemies) {
+            if (enemy instanceof EnemyShipGroup) { // Suponiendo que DiagonalEnemy es la clase para enemigos diagonales
+                grupos++;
+            }
+        }
+
+        int nuevos = 0;
+        for (AEnemy enemy : enemies) {
+            if (enemy instanceof EnemigoNuevo) { // Suponiendo que DiagonalEnemy es la clase para enemigos diagonales
+                nuevos++;
+            }
+        }
+
+        if (normales > 0) {log1.debug("Cantidad de EnemyShip N= " + normales);}
+        if (diagonales > 0) {log2.debug("Cantidad de EnemyShipDiagonal N= " + diagonales);}
+        if (grupos > 0) {log3.debug("Cantidad de EnemyShipGroup (Grupo de enemigos) N= " + grupos);}
+        if (nuevos > 0) {log4.debug("Cantidad de EnemigoNuevo N= " + nuevos);}
     }
 }
