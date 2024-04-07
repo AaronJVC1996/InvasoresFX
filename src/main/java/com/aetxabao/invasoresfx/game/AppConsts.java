@@ -49,6 +49,7 @@ public final class AppConsts {
     static final Image SHIP_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/ship0.png").toString());
     static final Image LIFES_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/lifes.png").toString());
     static final Image LASER_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/laser.png").toString());
+    public static final Image SKINBALA_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/SkinBala.png").toString());
     static final Image EXPLOSION_9_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/explo9.png").toString());
     static final Image EXPLOSION_12_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/explo12.png").toString());
     //endregion
@@ -70,7 +71,6 @@ public final class AppConsts {
     //endregion
 
     //region Gun
-    public static final Image SKINBALA_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/SkinBala.png").toString());
     public static final Image BALL_SPRITE_IMAGE = new Image(Main.class.getResource("sprite/ball.png").toString());
     //endregion
 

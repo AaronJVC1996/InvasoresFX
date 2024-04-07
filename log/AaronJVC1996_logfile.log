@@ -1660,3 +1660,33 @@
 [2024-04-07 05:41:20] [DEBUG] [GameManager: 63] nextLevel level=4
 [2024-04-07 05:41:20] [DEBUG] [EnemyShip:282] Cantidad de EnemyShip N= 3
 [2024-04-07 05:41:20] [DEBUG] [EnemyShipGroup:284] Cantidad de EnemyShipGroup (Grupo de enemigos) N= 1
+[2024-04-07 20:28:57] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-07 20:28:59] [DEBUG] [GameManager: 56] start level=1
+[2024-04-07 20:28:59] [DEBUG] [EnemyShip:286] Cantidad de EnemyShip N= 16
+[2024-04-07 20:28:59] [DEBUG] [EnemyShipDiagonal:287] Cantidad de EnemyShipDiagonal N= 2
+[2024-04-07 20:29:12] [DEBUG] [GameManager:223] updateGame E_APP_ONELESSLIFE enemies=0 shotsDown=6 shotsUp=4
+[2024-04-07 20:29:13] [DEBUG] [GameManager: 74] sameLevel level=1
+[2024-04-07 20:29:13] [DEBUG] [GameManager: 66] nextLevel level=2
+[2024-04-07 20:29:13] [DEBUG] [EnemyShip:286] Cantidad de EnemyShip N= 15
+[2024-04-07 20:29:13] [DEBUG] [EnemyShipDiagonal:287] Cantidad de EnemyShipDiagonal N= 15
+[2024-04-07 20:29:17] [DEBUG] [GameManager:223] updateGame E_APP_ONELESSLIFE enemies=12 shotsDown=6 shotsUp=3
+[2024-04-07 20:29:17] [DEBUG] [GameManager: 74] sameLevel level=2
+[2024-04-07 20:29:18] [DEBUG] [GameManager:221] updateGame E_APP_LOST enemies=11 shotsDown=1 shotsUp=1
+[2024-04-07 20:29:19] [DEBUG] [GameManager: 56] start level=1
+[2024-04-07 20:29:19] [DEBUG] [EnemyShip:286] Cantidad de EnemyShip N= 16
+[2024-04-07 20:29:19] [DEBUG] [EnemyShipDiagonal:287] Cantidad de EnemyShipDiagonal N= 2
+[2024-04-07 20:29:31] [DEBUG] [GameManager: 66] nextLevel level=2
+[2024-04-07 20:29:31] [DEBUG] [EnemyShip:286] Cantidad de EnemyShip N= 15
+[2024-04-07 20:29:31] [DEBUG] [EnemyShipDiagonal:287] Cantidad de EnemyShipDiagonal N= 15
+[2024-04-07 20:29:56] [DEBUG] [GameManager: 66] nextLevel level=3
+[2024-04-07 20:29:56] [DEBUG] [EnemyBarrier:289] Cantidad de EnemigoNuevo N= 1
+[2024-04-07 20:30:33] [DEBUG] [GameManager: 66] nextLevel level=4
+[2024-04-07 20:30:33] [DEBUG] [EnemyShip:286] Cantidad de EnemyShip N= 3
+[2024-04-07 20:30:33] [DEBUG] [EnemyShipGroup:288] Cantidad de EnemyShipGroup (Grupo de enemigos) N= 1
+[2024-04-07 22:23:07] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-07 22:24:52] [DEBUG] [GameManager: 56] start level=1
+[2024-04-07 22:24:52] [DEBUG] [EnemyShip:286] Cantidad de EnemyShip N= 16
+[2024-04-07 22:24:52] [DEBUG] [EnemyShipDiagonal:287] Cantidad de EnemyShipDiagonal N= 2
+[2024-04-07 22:25:04] [DEBUG] [GameManager: 66] nextLevel level=2
+[2024-04-07 22:25:04] [DEBUG] [EnemyShip:286] Cantidad de EnemyShip N= 15
+[2024-04-07 22:25:04] [DEBUG] [EnemyShipDiagonal:287] Cantidad de EnemyShipDiagonal N= 15
