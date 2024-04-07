@@ -242,7 +242,7 @@ public class EnemySpawner {
 
     public static List<AEnemy> nivelJefe(Rect gameRect) {
         List<AEnemy> enemies = new ArrayList<>();
-        enemies.add(createEnemigoNuevo(BOSS, ENEMYSHIP_ENEMIGONUEVO, gameRect, 0, 0, vx, 0, E_SHOT_GUN));
+        enemies.add(createEnemigoNuevo(BOSS, ENEMYSHIP_BOSS, gameRect, 0, 0, vx, 0, E_SHOT_GUN));
         enemies.add(createObstaculo(OBSTACULO, ENEMYSHIP_OBSTACULO, gameRect, 2, 0, 0, vy, E_SHOT_NOTHING));
         enemies.add(createObstaculo(OBSTACULO, ENEMYSHIP_OBSTACULO, gameRect, 4, 0, 0, vy, E_SHOT_NOTHING));
         enemies.add(createObstaculo(OBSTACULO, ENEMYSHIP_OBSTACULO, gameRect, 6, 0, 0, vy, E_SHOT_NOTHING));
