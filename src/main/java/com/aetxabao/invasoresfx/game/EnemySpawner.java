@@ -1,3 +1,6 @@
+/**
+ * @author Aaron Vasquez
+ */
 package com.aetxabao.invasoresfx.game;
 
 import com.aetxabao.invasoresfx.game.enums.EEnemyShot;

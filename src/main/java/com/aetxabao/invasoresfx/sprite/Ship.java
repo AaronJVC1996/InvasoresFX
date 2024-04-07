@@ -1,3 +1,6 @@
+/**
+ * @author Aaron Vasquez
+ */
 package com.aetxabao.invasoresfx.sprite;
 
 import com.aetxabao.invasoresfx.util.Rect;
