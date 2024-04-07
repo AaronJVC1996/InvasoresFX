@@ -1,21 +1,22 @@
 package com.aetxabao.invasoresfx.sprite;
 
+import com.aetxabao.invasoresfx.Main;
 import com.aetxabao.invasoresfx.util.Rect;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.aetxabao.invasoresfx.game.AppConsts.*;
 import static com.aetxabao.invasoresfx.game.AppConsts.ENEMYSHIP_ALFA;
 
 public class EnemyBarrier extends AEnemy implements IHaveShield, ICanSpawn {
     private int escudoEspacial;
+    private boolean ejecutado;
     int N;//ticks para cambio de frame
     int n;
     Rect gameRect;
-
+    private static final Image ENEMYSHIP_OBSTACULO = new Image(Main.class.getResource("sprite/Obstaculo.png").toString());
     public EnemyBarrier(Rect gameRect, Image img, int N) {
         super(img, ENEMYSHIP_ROWS, 1);
         this.gameRect = gameRect;
@@ -23,7 +24,8 @@ public class EnemyBarrier extends AEnemy implements IHaveShield, ICanSpawn {
         x = gameRect.left + width / 2;
         this.N = N;
         this.n = 0;
-        this.escudoEspacial = 21;
+        this.escudoEspacial = 33;
+        this.ejecutado = false;
     }
 
     public void updateFrame() {
@@ -69,20 +71,28 @@ public class EnemyBarrier extends AEnemy implements IHaveShield, ICanSpawn {
             return true; // El enemigo muere por que ya no tiene escudo
         }
     }
-
     @Override
-    // todo Aqui me quedo para cuano despierte seguir, de momento se crean los enemigos cada 5 ataques pero
-    // se crean con la misma imagen que el boss y no con la imagen de el asteroide, tengo que investigar un poco
-    public List<AEnemy> spawn() {
-            List<AEnemy> enemies = new ArrayList<>();
-            if (escudoEspacial % 5 == 0) {
-                for (int i = 0; i < 3; i++) {
-                              Obstaculo obstaculo = new Obstaculo(gameRect, img, N);
-                    obstaculo.setPos(i +2 , 0);
-                    enemies.add(obstaculo); //
-                }
+    // He añadido el metodo ICanSpawn bien implementado, he tenido que crear una nueva variable ejecutado debido a que
+    // si no creaba esta variable al llegar el escudoEspacial a 5, ejecutaba obstaculos sin parar hasta pegarle
+    // con otro disparo, con la variable boolean ejecutado ya no ocurre esto y esta perfecto
+    public List<AEnemy> spawn() { // El boss tiene 33 vidas asi que lanzara 6 veces su habilidad spawn
+        List<AEnemy> enemies = new ArrayList<>();
+        if (escudoEspacial % 5 == 0 && !ejecutado) { // Ejecutado comienza como falso, es boolean
+            for (int i = 0; i <= 4; i++) { // invoca 5 obstaculos
+                // Cambio de imagen a enemyship_obstaculo para que no sea la misma que enemybarrier
+                Obstaculo obstaculo = new Obstaculo(gameRect, ENEMYSHIP_OBSTACULO, N);
+                obstaculo.setPos(i * 110, 0);// Posiciones horizontales variadas, vertical 0(arriba del mapa)
+                obstaculo.setYSpeed(3); // Velocidad en vertical para que solo vaya hacia abajo
+                obstaculo.setXSpeed(0); // Velocidad en horizontal 0 para que solo vaya recto en vertical
+                enemies.add(obstaculo);
             }
-            return enemies;
-
+            // Ejecutado true para decirle que ya se ejecuto una vez y no se ejecute mas hasta el siguiente if
+            ejecutado = true;
+        }
+        // Este if vuelve a hacer a ejecutado false por lo tanto podra volver a crear los obstaculos
+        if (escudoEspacial % 5 != 0) {
+            ejecutado = false;
+        }
+        return enemies;
     }
 }
