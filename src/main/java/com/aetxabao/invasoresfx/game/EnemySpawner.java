@@ -22,7 +22,8 @@ public class EnemySpawner {
     private static Logger log1 = Logger.getLogger(EnemyShip.class);
     private static Logger log2 = Logger.getLogger(EnemyShipDiagonal.class);
     private static Logger log3 = Logger.getLogger(EnemyShipGroup.class);
-    private static Logger log4 = Logger.getLogger(EnemyBarrier.class);
+    private static Logger log4 = Logger.getLogger(Obstaculo.class);
+    private static Logger log5 = Logger.getLogger(EnemyBarrier.class);
 
     //region attributes
     public static int n = 8;
@@ -276,16 +277,24 @@ public class EnemySpawner {
             }
         }
 
-        int nuevos = 0;
+        int boss = 0;
         for (AEnemy enemy : enemies) {
             if (enemy instanceof EnemyBarrier) {
-                nuevos++;
+                boss++;
+            }
+        }
+
+        int obstaculos= 0;
+        for (AEnemy enemy : enemies) {
+            if (enemy instanceof Obstaculo) {
+                obstaculos++;
             }
         }
 
         if (normales > 0) {log1.debug("Cantidad de EnemyShip N= " + normales);}
         if (diagonales > 0) {log2.debug("Cantidad de EnemyShipDiagonal N= " + diagonales);}
         if (grupos > 0) {log3.debug("Cantidad de EnemyShipGroup (Grupo de enemigos) N= " + grupos);}
-        if (nuevos > 0) {log4.debug("Cantidad de EnemigoNuevo N= " + nuevos);}
+        if (obstaculos > 0) {log4.debug("Cantidad de Obstaculos N= " + obstaculos);}
+        if (boss > 0) {log5.debug("Cantidad de EnemigoNuevo N= " + boss);}
     }
 }
