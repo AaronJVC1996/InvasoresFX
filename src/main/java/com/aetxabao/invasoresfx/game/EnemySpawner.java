@@ -109,7 +109,7 @@ public class EnemySpawner {
         return e;
     }
 
-    public static EnemyBarrier createEnemigoNuevo(EEnemyType type, Image enemyImage, Rect gameRect, int i, int j, int vx, int vy, EEnemyShot shot) {
+    public static EnemyBarrier createEnemigoJefe(EEnemyType type, Image enemyImage, Rect gameRect, int i, int j, int vx, int vy, EEnemyShot shot) {
         EnemyBarrier a; // Para crear enemigos de tipo enemybarrier
         switch (type) {
             case BOSS:
@@ -242,7 +242,7 @@ public class EnemySpawner {
 
     public static List<AEnemy> nivelJefe(Rect gameRect) {
         List<AEnemy> enemies = new ArrayList<>();
-        enemies.add(createEnemigoNuevo(BOSS, ENEMYSHIP_BOSS, gameRect, 0, 0, vx, 0, E_SHOT_GUN));
+        enemies.add(createEnemigoJefe(BOSS, ENEMYSHIP_BOSS, gameRect, 0, 0, vx, 0, E_SHOT_GUN));
         enemies.add(createObstaculo(OBSTACULO, ENEMYSHIP_OBSTACULO, gameRect, 2, 0, 0, vy, E_SHOT_NOTHING));
         enemies.add(createObstaculo(OBSTACULO, ENEMYSHIP_OBSTACULO, gameRect, 4, 0, 0, vy, E_SHOT_NOTHING));
         enemies.add(createObstaculo(OBSTACULO, ENEMYSHIP_OBSTACULO, gameRect, 6, 0, 0, vy, E_SHOT_NOTHING));
