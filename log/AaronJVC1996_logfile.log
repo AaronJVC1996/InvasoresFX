@@ -1700,3 +1700,14 @@
 [2024-04-07 22:49:48] [DEBUG] [GameManager: 66] nextLevel level=3
 [2024-04-07 22:49:48] [DEBUG] [EnemyBarrier:289] Cantidad de EnemigoNuevo N= 1
 [2024-04-07 22:49:53] [DEBUG] [GameManager:223] updateGame E_APP_ONELESSLIFE enemies=9 shotsDown=5 shotsUp=5
+[2024-04-07 23:40:15] [INFO ] [AppInvasoresFx: 52] --------------------------------------------------------------------------------
+[2024-04-07 23:40:16] [DEBUG] [GameManager: 56] start level=1
+[2024-04-07 23:40:16] [DEBUG] [EnemyShip:294] Cantidad de EnemyShip N= 16
+[2024-04-07 23:40:16] [DEBUG] [EnemyShipDiagonal:295] Cantidad de EnemyShipDiagonal N= 2
+[2024-04-07 23:40:32] [DEBUG] [GameManager: 66] nextLevel level=2
+[2024-04-07 23:40:32] [DEBUG] [EnemyShip:294] Cantidad de EnemyShip N= 15
+[2024-04-07 23:40:32] [DEBUG] [EnemyShipDiagonal:295] Cantidad de EnemyShipDiagonal N= 15
+[2024-04-07 23:40:32] [DEBUG] [Obstaculo:297] Cantidad de Obstaculos N= 4
+[2024-04-07 23:40:40] [DEBUG] [GameManager: 66] nextLevel level=3
+[2024-04-07 23:40:40] [DEBUG] [Obstaculo:297] Cantidad de Obstaculos N= 3
+[2024-04-07 23:40:40] [DEBUG] [EnemyBarrier:298] Cantidad de EnemigoNuevo N= 1
